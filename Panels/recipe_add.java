@@ -84,7 +84,7 @@ public class recipe_add extends JFrame {
 				if(Jcid.getText().length() == 0 ||  Jmid.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
-					String SQLstatement = "insert into recipe (coffee_id, material_id,dosage) "
+					String SQLstatement = "insert into recipe (c_id, ml_id,dosage) "
 							+ "values( '" + Jcid.getText() 
 							+ "' ,'" +Jmid.getText() 
 							+"','" +Jdosage.getText()+"')";

@@ -19,26 +19,36 @@ public class supply_item extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	int supply_id;
 	int supplier_id;
 	int material_id;
 	int amount;
 	int price;
-	public supply_item(int supplier_id,	int material_id, int amount, int price) {
+	public supply_item(int supply_id, int supplier_id,	int material_id, int amount, int price) {
+		this.supply_id = supply_id;
 		this.supplier_id = supplier_id;
 		this.material_id = material_id;
 		this.amount = amount;
 		this.price = price;
 		setLayout(null);
+		
+		JFormattedTextField Jsuid = new JFormattedTextField();
+		Jsuid.setHorizontalAlignment(SwingConstants.CENTER);
+		Jsuid.setBounds(5, 5, 40, 35);
+		Jsuid.setEditable(false);
+		Jsuid.setText(""+supply_id);
+		add(Jsuid);
+		
 		JFormattedTextField Jsid = new JFormattedTextField();
 		Jsid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsid.setBounds(5, 5, 60, 35);
+		Jsid.setBounds(45, 5, 40, 35);
 		Jsid.setEditable(false);
 		Jsid.setText(""+supplier_id);
 		add(Jsid);
 		
 		JFormattedTextField Jmid = new JFormattedTextField();
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jmid.setBounds(65, 5, 60, 35);
+		Jmid.setBounds(85, 5, 40, 35);
 		Jmid.setEditable(false);
 		Jmid.setText(""+material_id);
 		add(Jmid);
@@ -80,7 +90,7 @@ public class supply_item extends JPanel {
 			       			+ " ' ,material_id = ' "+ Jmid.getText()
 			       			+ " ' ,amount = ' "+ Jamount.getText()
 			       			+ " ' ,price = ' "+ Jprice.getText()
-			       			+ " '  where supplier_id = " + supplier_id +"and material_id = " + material_id;
+			       			+ " '  where su_id = " + supply_id;
 			       	try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {
@@ -98,7 +108,7 @@ public class supply_item extends JPanel {
 		       public void actionPerformed(ActionEvent arg0) {
 		       	int rt = JOptionPane.showConfirmDialog(null,"È·ÈÏÒªÉ¾³ýÂð£¿","É¾³ý",JOptionPane.YES_NO_OPTION);
 		       	if (rt == 0){
-		       		String SQLstatement = "delete from supply where su_id = " + supplier_id +"and m_id = " + material_id;
+		       		String SQLstatement = "delete from supply where su_id = " + supply_id;
 		       		try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {

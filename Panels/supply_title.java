@@ -14,16 +14,21 @@ public class supply_title extends JPanel {
 	 * Create the panel.
 	 */
 	public supply_title() {
+		JLabel Jsuid = new JLabel("供应ID");
+		Jsuid.setHorizontalAlignment(SwingConstants.CENTER);
+		Jsuid.setBounds(5, 5, 40, 35);
+		Jsuid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
+		add(Jsuid);
+		
 		JLabel Jsid = new JLabel("供应商ID");
 		Jsid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsid.setBounds(5, 5, 60, 35);
+		Jsid.setBounds(45, 5, 40, 35);
 		Jsid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
-		
 		add(Jsid);
 		
 		JLabel Jmid = new JLabel("原料ID");
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jmid.setBounds(65, 5, 60, 35);
+		Jmid.setBounds(85, 5, 40, 35);
 		Jmid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jmid);
 		

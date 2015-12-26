@@ -30,6 +30,7 @@ public class coffee_add extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	int num = 0;//咖啡余量
 	coffee_add coffee_add_frame = this;
 	public coffee_add() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,11 +51,8 @@ public class coffee_add extends JFrame {
 		Iprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(Iprice);
 		
-		JLabel lnum = new JLabel("数量");
-		lnum.setHorizontalAlignment(SwingConstants.CENTER);
-		lnum.setBounds(185, 5, 70, 35);
-		lnum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
-		getContentPane().add(lnum);
+		/*咖啡的数量应该是算出来的。如果配方表中已经记录了该咖啡，则算出来，否则默认为0*/
+		/*配方表中增添信息时，也要修改咖啡的量*/
 		
 		
 		JFormattedTextField Jname = new JFormattedTextField();
@@ -71,11 +69,7 @@ public class coffee_add extends JFrame {
 		Jprice.setEditable(true);
 		getContentPane().add(Jprice);
 		
-		JFormattedTextField Jnum = new JFormattedTextField();
-		Jnum.setHorizontalAlignment(SwingConstants.CENTER);
-		Jnum.setBounds(185, 40, 70, 35);
-		Jnum.setEditable(true);
-		getContentPane().add(Jnum);
+		
 		
 		JButton confirm = new JButton("确定");
 		confirm.addActionListener(new ActionListener() {
@@ -86,7 +80,7 @@ public class coffee_add extends JFrame {
 					String SQLstatement = "insert into coffee (c_name, c_price,c_num) "
 							+ "values( '" + Jname.getText() 
 							+ "' ,'" +Jprice.getText() 
-							+ "' ,'" +Jnum.getText() 
+							+ "' ,'" +num 
 							+"')";
 					try {
 	                                   ConnectDataBase.Update(SQLstatement);

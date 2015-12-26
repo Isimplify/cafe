@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -50,13 +51,13 @@ public class supply_add extends JFrame {
 		Imid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(Imid);
 		
-		JLabel Iamount = new JLabel("原料ID");
+		JLabel Iamount = new JLabel("数量");
 		Iamount.setHorizontalAlignment(SwingConstants.CENTER);
 		Iamount.setBounds(155, 5, 80, 35);
 		Iamount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(Iamount);
 		
-		JLabel lprice = new JLabel("原料ID");
+		JLabel lprice = new JLabel("总价");
 		lprice.setHorizontalAlignment(SwingConstants.CENTER);
 		lprice.setBounds(235, 5, 80, 35);
 		lprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
@@ -96,7 +97,7 @@ public class supply_add extends JFrame {
 				if(Jsid.getText().length() == 0 ||  Jmid.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
-					String SQLstatement = "insert into supply (su_id, m_id,amount,price) "
+					String SQLstatement = "insert into supply (s_id, m_id,amount,price) "
 							+ "values( '" + Jsid.getText() 
 							+"','" + Jmid.getText()
 							+"','" + Jamount.getText()	
@@ -107,6 +108,7 @@ public class supply_add extends JFrame {
 	                                   // TODO Auto-generated catch block
 	                                   e.printStackTrace();
                                    }
+					updateCoffeeNum(Jmid.getText());
 					Manager_UI.showMap("supply");
 					supply_add_frame.dispose();
 				}
@@ -127,5 +129,37 @@ public class supply_add extends JFrame {
 		
 		this.setVisible(true);
 	}
-
+	void updateCoffeeNum(String mid){
+		ResultSet rs1 = null;
+		String SQLstatement1 = "select c_id from recipe where m_id = " + mid;
+		rs1 = ConnectDataBase.Select(SQLstatement1);
+		try {
+	              while(rs1.next()){
+	              	int cid = rs1.getInt(1);
+	              	ResultSet rs2 = null;
+	              	String SQLstatement2 = "select m_id,dosage from recipe where c_id = "+cid;
+	              	rs2 = ConnectDataBase.Select(SQLstatement2);
+	              	int min = -1;
+	              	while(rs2.next()){
+	              		ResultSet rs3 = null;
+	              		int m_id = rs2.getInt(1);
+	              		String SQLstatement3 = "select m_inventory from material where m_id = " + m_id;
+	              		rs3 = ConnectDataBase.Select(SQLstatement3);
+	              		int inventory = 0;
+	              		if(rs3.next())
+	              			inventory = rs3.getInt(1);
+	              		int dosage = rs2.getInt(2);
+	              		int num = inventory / dosage;
+	              		if(num < min || min == -1)
+	              			min = num;
+	              	}
+	              	String SQLstatement4 = "update coffee set c_num = "+min +" where c_id = " + cid;
+	              	ConnectDataBase.Update(SQLstatement4);
+	              	
+	              }
+              } catch (SQLException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+              }
+	}
 }
