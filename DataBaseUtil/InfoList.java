@@ -38,7 +38,6 @@ public class InfoList {
 				String tele = rs.getString(5);
 				supplier_item temp = new supplier_item(id, name, city, tele);
 				suppliers.put(new Integer(id), temp);
-				System.out.println(id +" "+ name +" "+city+" "+tele);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,7 +58,6 @@ public class InfoList {
 				int num = rs.getInt(4);
 				coffee_item temp = new coffee_item(id, name, price, num);
 				coffee.put(new Integer(id), temp);
-				System.out.println(id +" "+ name +" "+price);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -82,7 +80,6 @@ public class InfoList {
 				double consume_total = rs.getDouble(6);
 				consumer_item temp = new consumer_item(id, name, sex,consume,ifMember,consume_total);
 				consumers.put(id, temp);
-				System.out.println(id +" "+ name +" "+sex+ "" +consume+ "" +ifMember + "" +consume_total);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -125,7 +122,6 @@ public class InfoList {
 				int inventory = rs.getInt(3);
 				material_item temp = new material_item(id, name, inventory);
 				materials.put(id, temp);
-				System.out.println(id +" "+ name +" "+inventory);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -145,7 +141,6 @@ public class InfoList {
 				int salary = rs.getInt(3);
 				position_item temp = new position_item(id, position, salary);
 				positions.put(new Integer(id), temp);
-				System.out.println(id +" "+ position +" "+salary);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -165,7 +160,6 @@ public class InfoList {
 				int dosage = rs.getInt(3);
 				recipe_item temp = new recipe_item(m_id, c_id, dosage);
 				recipes.put(new Integer(m_id*1000+c_id), temp);
-				System.out.println(m_id +" "+ c_id +" "+dosage);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -180,13 +174,13 @@ public class InfoList {
 		supplies = new HashMap<Integer, supply_item>();
 		try {
 			while(rs.next()){
-				int m_id = rs.getInt(1);
+				int su_id = rs.getInt(1);
 				int s_id = rs.getInt(2);
-				int amount = rs.getInt(3);
-				int price = rs.getInt(4);
-				supply_item temp = new supply_item(m_id, s_id, amount, price);
+				int m_id = rs.getInt(3);
+				int amount = rs.getInt(4);
+				int price = rs.getInt(5);
+				supply_item temp = new supply_item(su_id, s_id, m_id, amount, price);
 				supplies.put(new Integer(m_id*1000+s_id), temp);
-				System.out.println(m_id +" "+ s_id );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -34,7 +34,11 @@ public class coffee_title extends JPanel {
 		Jprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jprice);
 		
-		
+		JLabel Jnum = new JLabel("ÊýÁ¿");
+		Jnum.setHorizontalAlignment(SwingConstants.CENTER);
+		Jnum.setBounds(205, 5, 70, 35);
+		Jnum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
+		add(Jnum);
 		
 		JButton add = new JButton("Ìí¼Ó");
 		add.setBounds(405, 5, 60, 35);

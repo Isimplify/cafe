@@ -49,14 +49,14 @@ public class coffee_item extends JPanel {
 		Jprice.setHorizontalAlignment(SwingConstants.CENTER);
 		Jprice.setBounds(135, 5, 70, 35);
 		Jprice.setEditable(false);
-		Jprice.setText("" + Jprice);
+		Jprice.setText("" + price);
 		add(Jprice);
 		
 		JFormattedTextField Jnum = new JFormattedTextField();
 		Jnum.setHorizontalAlignment(SwingConstants.CENTER);
 		Jnum.setBounds(205, 5, 70, 35);
 		Jnum.setEditable(false);
-		Jnum.setText("" + Jnum);
+		Jnum.setText("" + num);
 		add(Jnum);
 		
 		JButton modify = new JButton("ÐÞ¸Ä");

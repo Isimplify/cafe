@@ -42,28 +42,24 @@ public class recipe_add extends JFrame {
 		lcid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(lcid);
 		
-		
-		
 		JLabel lmid = new JLabel("原料ID");
 		lmid.setHorizontalAlignment(SwingConstants.CENTER);
 		lmid.setBounds(115, 5, 80, 35);
 		lmid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(lmid);
 		
-		
 		JLabel ldosage = new JLabel("用量");
 		ldosage.setHorizontalAlignment(SwingConstants.CENTER);
-		ldosage.setBounds(195, 5, 70, 35);
+		ldosage.setBounds(195, 5, 80, 35);
 		ldosage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(ldosage);
+		
 		
 		JFormattedTextField Jcid = new JFormattedTextField();
 		Jcid.setHorizontalAlignment(SwingConstants.CENTER);
 		Jcid.setBounds(35, 40, 80, 35);
 		Jcid.setEditable(true);
 		getContentPane().add(Jcid);
-		
-		
 		
 		JFormattedTextField Jmid = new JFormattedTextField();
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -73,7 +69,7 @@ public class recipe_add extends JFrame {
 		
 		JFormattedTextField Jdosage = new JFormattedTextField();
 		Jdosage.setHorizontalAlignment(SwingConstants.CENTER);
-		Jdosage.setBounds(195, 40, 70, 35);
+		Jdosage.setBounds(195, 40, 80, 35);
 		Jdosage.setEditable(true);
 		getContentPane().add(Jdosage);
 		
@@ -84,7 +80,7 @@ public class recipe_add extends JFrame {
 				if(Jcid.getText().length() == 0 ||  Jmid.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
-					String SQLstatement = "insert into recipe (coffee_id, material_id,dosage) "
+					String SQLstatement = "insert into recipe (c_id, m_id,dosage) "
 							+ "values( '" + Jcid.getText() 
 							+ "' ,'" +Jmid.getText() 
 							+"','" +Jdosage.getText()+"')";

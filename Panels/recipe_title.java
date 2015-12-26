@@ -14,22 +14,24 @@ public class recipe_title extends JPanel {
 	 * Create the panel.
 	 */
 	public recipe_title() {
+		
+		
+		
 		JLabel Jcid = new JLabel("咖啡ID");
 		Jcid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jcid.setBounds(5, 5, 50, 35);
+		Jcid.setBounds(5, 5, 80, 35);
 		Jcid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
-		
 		add(Jcid);
 		
 		JLabel Jmid = new JLabel("原料ID");
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jmid.setBounds(55, 5, 80, 35);
+		Jmid.setBounds(85, 5, 80, 35);
 		Jmid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jmid);
 		
 		JLabel Jdosage = new JLabel("用量");
 		Jdosage.setHorizontalAlignment(SwingConstants.CENTER);
-		Jdosage.setBounds(135, 5, 80, 35);
+		Jdosage.setBounds(165, 5, 80, 35);
 		Jdosage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jdosage);
 		
