@@ -155,11 +155,15 @@ public class InfoList {
 		recipes = new HashMap<Integer, recipe_item>();
 		try {
 			while(rs.next()){
-				int m_id = rs.getInt(1);
-				int c_id = rs.getInt(2);
+				int c_id = rs.getInt(1);
+				int m_id = rs.getInt(2);
 				int dosage = rs.getInt(3);
-				recipe_item temp = new recipe_item(m_id, c_id, dosage);
+				recipe_item temp = new recipe_item(c_id, m_id, dosage);
 				recipes.put(new Integer(m_id*1000+c_id), temp);
+<<<<<<< HEAD
+=======
+				System.out.println(c_id +" "+ m_id +" "+dosage);
+>>>>>>> zhaoshuhong
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -180,7 +184,12 @@ public class InfoList {
 				int amount = rs.getInt(4);
 				int price = rs.getInt(5);
 				supply_item temp = new supply_item(su_id, s_id, m_id, amount, price);
+<<<<<<< HEAD
 				supplies.put(new Integer(m_id*1000+s_id), temp);
+=======
+				supplies.put(new Integer(su_id), temp);
+				//System.out.println(m_id +" "+ s_id );
+>>>>>>> zhaoshuhong
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -23,11 +23,19 @@ public class recipe_item extends JPanel {
 	int material_id;
 	int dosage;
 	recipe_item recipe_item_obj = this;
+<<<<<<< HEAD
 	public recipe_item( int coffee_id,  int material_id, int dosage) {
+=======
+	public recipe_item(int coffee_id, int material_id, int dosage) {
+>>>>>>> zhaoshuhong
 		this.coffee_id = coffee_id;
 		this.material_id = material_id;
 		this.dosage = dosage;
 		setLayout(null);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> zhaoshuhong
 		JFormattedTextField Jcid = new JFormattedTextField();
 		Jcid.setHorizontalAlignment(SwingConstants.CENTER);
 		Jcid.setBounds(5, 5, 80, 35);
@@ -70,11 +78,18 @@ public class recipe_item extends JPanel {
 			       	Jmid.setEditable(false);
 			       	Jcid.setEditable(false);
 			       	Jdosage.setEditable(false);
+<<<<<<< HEAD
 			       	String SQLstatement = "Update recipe  set c_id = ' "+ Jcid.getText()
 			       			+ " ', m_id = ' "+ Jmid.getText()
 			       			+ " ', dosage=' " + Jdosage.getText()
 			       			+ " ' where  c_id = " + recipe_item_obj.coffee_id  + " and m_id =  " + recipe_item_obj.material_id ;
 			       	System.out.println(SQLstatement);
+=======
+			       	String SQLstatement = "Update new_schema1.recipe set c_id = ' "+ Jcid.getText()
+			       			+ " ' ,m_id = ' "+ Jmid.getText()
+			       			+ " ' ,dosage=' " + Jdosage.getText()
+			       			+ " '  where c_id = " + recipe_item_obj.coffee_id + " and m_id = " + recipe_item_obj.material_id;
+>>>>>>> zhaoshuhong
 			       	try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {
@@ -95,8 +110,12 @@ public class recipe_item extends JPanel {
 		       public void actionPerformed(ActionEvent arg0) {
 		       	int rt = JOptionPane.showConfirmDialog(null,"È·ÈÏÒªÉ¾³ýÂð£¿","É¾³ý",JOptionPane.YES_NO_OPTION);
 		       	if (rt == 0){
+<<<<<<< HEAD
 		       		String SQLstatement = "delete from recipe where c_id = " + recipe_item_obj.coffee_id + " and m_id = " +recipe_item_obj.material_id;
 		       		System.out.println(SQLstatement);
+=======
+		       		String SQLstatement = "delete from recipe where _id = " + recipe_item_obj.coffee_id + " and m_id = " + recipe_item_obj.material_id;
+>>>>>>> zhaoshuhong
 		       		try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {

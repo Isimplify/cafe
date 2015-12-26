@@ -98,7 +98,11 @@ public class supply_add extends JFrame {
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
 					String SQLstatement = "insert into supply (s_id, m_id,amount,price) "
+<<<<<<< HEAD
 							+ "values( '" + Jsid.getText()
+=======
+							+ "values( '" + Jsid.getText() 
+>>>>>>> zhaoshuhong
 							+"','" + Jmid.getText()
 							+"','" + Jamount.getText()	
 							+ "' ,'" +Jprice.getText() +"')";
@@ -108,7 +112,11 @@ public class supply_add extends JFrame {
 	                                   // TODO Auto-generated catch block
 	                                   e.printStackTrace();
                                    }
+<<<<<<< HEAD
 					addCoffeeNum(Jmid.getText());
+=======
+					updateCoffeeNum(Jmid.getText());
+>>>>>>> zhaoshuhong
 					Manager_UI.showMap("supply");
 					supply_add_frame.dispose();
 				}
@@ -129,6 +137,7 @@ public class supply_add extends JFrame {
 		
 		this.setVisible(true);
 	}
+<<<<<<< HEAD
 	void addCoffeeNum(String mid){
 		String SQLstatement = "select c_id from recipe where m_id = " + mid;
 		ResultSet rs = null;
@@ -159,6 +168,35 @@ public class supply_add extends JFrame {
 	              		String SQLstatement4 = "update coffee set c_num = '"+ min + "' where c_id =" + cid;
 	              		ConnectDataBase.Update(SQLstatement4);
 	              	}
+=======
+	void updateCoffeeNum(String mid){
+		ResultSet rs1 = null;
+		String SQLstatement1 = "select c_id from recipe where m_id = " + mid;
+		rs1 = ConnectDataBase.Select(SQLstatement1);
+		try {
+	              while(rs1.next()){
+	              	int cid = rs1.getInt(1);
+	              	ResultSet rs2 = null;
+	              	String SQLstatement2 = "select m_id,dosage from recipe where c_id = "+cid;
+	              	rs2 = ConnectDataBase.Select(SQLstatement2);
+	              	int min = -1;
+	              	while(rs2.next()){
+	              		ResultSet rs3 = null;
+	              		int m_id = rs2.getInt(1);
+	              		String SQLstatement3 = "select m_inventory from material where m_id = " + m_id;
+	              		rs3 = ConnectDataBase.Select(SQLstatement3);
+	              		int inventory = 0;
+	              		if(rs3.next())
+	              			inventory = rs3.getInt(1);
+	              		int dosage = rs2.getInt(2);
+	              		int num = inventory / dosage;
+	              		if(num < min || min == -1)
+	              			min = num;
+	              	}
+	              	String SQLstatement4 = "update coffee set c_num = "+min +" where c_id = " + cid;
+	              	ConnectDataBase.Update(SQLstatement4);
+	              	
+>>>>>>> zhaoshuhong
 	              }
               } catch (SQLException e) {
 	              // TODO Auto-generated catch block
