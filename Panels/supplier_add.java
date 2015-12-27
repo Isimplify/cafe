@@ -117,4 +117,5 @@ public class supplier_add extends JFrame {
 		this.setVisible(true);
 	}
 }
-/*that is a test*/
+
+/*that is is is a test*/
