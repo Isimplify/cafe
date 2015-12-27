@@ -38,7 +38,7 @@ public class supplier_add extends JFrame {
 		setBounds(5, 5, 308,176);
 		getContentPane().setLayout(null);
 		
-		JLabel lname = new JLabel("姓名");
+		JLabel lname = new JLabel("濮撳悕");
 		lname.setHorizontalAlignment(SwingConstants.CENTER);
 		lname.setBounds(5, 5, 80, 35);
 		lname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
@@ -46,13 +46,13 @@ public class supplier_add extends JFrame {
 		
 		
 		
-		JLabel lcity = new JLabel("城市");
+		JLabel lcity = new JLabel("鍩庡競");
 		lcity.setHorizontalAlignment(SwingConstants.CENTER);
 		lcity.setBounds(85, 5, 70, 35);
 		lcity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(lcity);
 		
-		JLabel ltel = new JLabel("电话号码");
+		JLabel ltel = new JLabel("鐢佃瘽鍙风爜");
 		ltel.setHorizontalAlignment(SwingConstants.CENTER);
 		ltel.setBounds(155, 5, 120, 35);
 		ltel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
@@ -80,11 +80,11 @@ public class supplier_add extends JFrame {
 		Jtel.setEditable(true);
 		getContentPane().add(Jtel);
 		
-		JButton confirm = new JButton("确定");
+		JButton confirm = new JButton("纭畾");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(Jname.getText().length() == 0 ||  Jcity.getText().length() == 0 || Jtel.getText().length() == 0)
-					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "璇峰湪鏂囨湰妗嗕腑杈撳叆鍐呭", "閿欒", JOptionPane.ERROR_MESSAGE);
 				else{
 					String SQLstatement = "insert into supplier (s_name,  s_addr, s_tele) "
 							+ "values( '" + Jname.getText()  
@@ -104,7 +104,7 @@ public class supplier_add extends JFrame {
 		confirm.setBounds(55, 97, 80, 30);
 		getContentPane().add(confirm);
 		
-		JButton cancel = new JButton("取消");
+		JButton cancel = new JButton("鍙栨秷");
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				supplier_add_frame.dispose();
@@ -117,3 +117,4 @@ public class supplier_add extends JFrame {
 		this.setVisible(true);
 	}
 }
+/*this is a test*/
