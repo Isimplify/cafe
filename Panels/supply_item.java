@@ -25,20 +25,14 @@ public class supply_item extends JPanel {
 	int amount;
 	int price;
 	public supply_item(int supply_id, int supplier_id,	int material_id, int amount, int price) {
-<<<<<<< HEAD
-		this.supply_id = supplier_id;
-=======
+
 		this.supply_id = supply_id;
->>>>>>> zhaoshuhong
 		this.supplier_id = supplier_id;
 		this.material_id = material_id;
 		this.amount = amount;
 		this.price = price;
 		setLayout(null);
-<<<<<<< HEAD
-=======
 		
->>>>>>> zhaoshuhong
 		JFormattedTextField Jsuid = new JFormattedTextField();
 		Jsuid.setHorizontalAlignment(SwingConstants.CENTER);
 		Jsuid.setBounds(5, 5, 40, 35);
@@ -97,11 +91,8 @@ public class supply_item extends JPanel {
 			       			+ " ' ,material_id = ' "+ Jmid.getText()
 			       			+ " ' ,amount = ' "+ Jamount.getText()
 			       			+ " ' ,price = ' "+ Jprice.getText()
-<<<<<<< HEAD
-			       			+ " '  where su_id = " + Jsuid.getText();
-=======
+
 			       			+ " '  where su_id = " + supply_id;
->>>>>>> zhaoshuhong
 			       	try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {
@@ -119,11 +110,9 @@ public class supply_item extends JPanel {
 		       public void actionPerformed(ActionEvent arg0) {
 		       	int rt = JOptionPane.showConfirmDialog(null,"È·ÈÏÒªÉ¾³ýÂð£¿","É¾³ý",JOptionPane.YES_NO_OPTION);
 		       	if (rt == 0){
-<<<<<<< HEAD
-		       		String SQLstatement = "delete from supply where su_id = " + supply_id ;
-=======
+
 		       		String SQLstatement = "delete from supply where su_id = " + supply_id;
->>>>>>> zhaoshuhong
+
 		       		try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {

@@ -98,11 +98,9 @@ public class supply_add extends JFrame {
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
 					String SQLstatement = "insert into supply (s_id, m_id,amount,price) "
-<<<<<<< HEAD
-							+ "values( '" + Jsid.getText()
-=======
+
 							+ "values( '" + Jsid.getText() 
->>>>>>> zhaoshuhong
+
 							+"','" + Jmid.getText()
 							+"','" + Jamount.getText()	
 							+ "' ,'" +Jprice.getText() +"')";
@@ -112,11 +110,8 @@ public class supply_add extends JFrame {
 	                                   // TODO Auto-generated catch block
 	                                   e.printStackTrace();
                                    }
-<<<<<<< HEAD
-					addCoffeeNum(Jmid.getText());
-=======
+
 					updateCoffeeNum(Jmid.getText());
->>>>>>> zhaoshuhong
 					Manager_UI.showMap("supply");
 					supply_add_frame.dispose();
 				}
@@ -137,38 +132,7 @@ public class supply_add extends JFrame {
 		
 		this.setVisible(true);
 	}
-<<<<<<< HEAD
-	void addCoffeeNum(String mid){
-		String SQLstatement = "select c_id from recipe where m_id = " + mid;
-		ResultSet rs = null;
-		rs = ConnectDataBase.Select(SQLstatement);
-		int cid;
-		try {
-	              while(rs.next()){
-	              	cid = rs.getInt(1);
-	              	/*查它的每一种原材料*/
-	              	{
-	              		String SQLstatement2 = "select m_id,dosage from recipe where c_id = "+cid;
-	              		ResultSet rs2 = null;
-	              		rs2 = ConnectDataBase.Select(SQLstatement2);
-	              		int min = -1;
-	              		while(rs2.next()){
-	              			int m_id = rs2.getInt(1);
-	              			String SQLstatement3 = "select m_inventory from material where m_id = " + m_id;
-	              			ResultSet rs3 = ConnectDataBase.Select(SQLstatement3);
-	              			int inventory = 0;
-	              			if(rs3.next()){
-	              				inventory = rs3.getInt(1);
-	              			}
-	              			int dosage = rs2.getInt(2);
-	              			int temp = inventory / dosage;
-	              			if(temp < min || min == -1)
-	              				min = temp;
-	              		}
-	              		String SQLstatement4 = "update coffee set c_num = '"+ min + "' where c_id =" + cid;
-	              		ConnectDataBase.Update(SQLstatement4);
-	              	}
-=======
+
 	void updateCoffeeNum(String mid){
 		ResultSet rs1 = null;
 		String SQLstatement1 = "select c_id from recipe where m_id = " + mid;
@@ -195,8 +159,7 @@ public class supply_add extends JFrame {
 	              	}
 	              	String SQLstatement4 = "update coffee set c_num = "+min +" where c_id = " + cid;
 	              	ConnectDataBase.Update(SQLstatement4);
-	              	
->>>>>>> zhaoshuhong
+
 	              }
               } catch (SQLException e) {
 	              // TODO Auto-generated catch block
