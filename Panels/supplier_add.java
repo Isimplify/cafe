@@ -117,5 +117,5 @@ public class supplier_add extends JFrame {
 		this.setVisible(true);
 	}
 }
-/*changed in zhaoshuhong branch*/
+/*the second time*/
 /*that is is is a test*/
