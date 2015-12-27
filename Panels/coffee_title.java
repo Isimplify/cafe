@@ -1,5 +1,6 @@
 package Panels;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class coffee_title extends JPanel {
 
@@ -14,18 +16,13 @@ public class coffee_title extends JPanel {
 	 * Create the panel.
 	 */
 	public coffee_title() {
+		setLayout(null);
 		JLabel Jid = new JLabel("ID");
+		Jid.setFont(new Font("Droid Serif", Font.BOLD, 12));
 		Jid.setHorizontalAlignment(SwingConstants.CENTER);
 		Jid.setBounds(5, 5, 50, 35);
 		Jid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
-		
 		add(Jid);
-		
-		JLabel Jname = new JLabel("名称");
-		Jname.setHorizontalAlignment(SwingConstants.CENTER);
-		Jname.setBounds(55, 5, 80, 35);
-		Jname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
-		add(Jname);
 		
 		
 		JLabel Jprice = new JLabel("价格");
@@ -33,6 +30,12 @@ public class coffee_title extends JPanel {
 		Jprice.setBounds(135, 5, 70, 35);
 		Jprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jprice);
+		
+		JLabel Jname = new JLabel("名称");
+		Jname.setHorizontalAlignment(SwingConstants.CENTER);
+		Jname.setBounds(55, 5, 80, 35);
+		Jname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
+		add(Jname);
 		
 		JLabel Jnum = new JLabel("数量");
 		Jnum.setHorizontalAlignment(SwingConstants.CENTER);

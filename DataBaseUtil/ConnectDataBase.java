@@ -19,10 +19,11 @@ public class ConnectDataBase {
 			e.printStackTrace();
 		}
 		try {
-		      java.sql.Connection connect = DriverManager.getConnection("jdbc:mysql://192.168.26.102:3306/new_schema1",user,pwd);
+		      java.sql.Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_schema1",user,pwd);
 		      System.out.println("Success connect Mysql server!");
 		      stmt = connect.createStatement();
 		      rs = stmt.executeQuery(SQLstatement);
+		      //connect.close();
 		      
 		}catch (Exception e) {
 		      System.out.print("get data error!");
@@ -42,11 +43,12 @@ public class ConnectDataBase {
 			e.printStackTrace();
 		}
 		try {
-		      java.sql.Connection connect = DriverManager.getConnection("jdbc:mysql://192.168.26.102:3306/new_schema1",user,pwd);
+		      java.sql.Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_schema1",user,pwd);
 		      System.out.println("Success connect Mysql server!");
 		      stmt = connect.createStatement();
 		      stmt.executeUpdate(SQLstatement);
-		      
+		      //connect.close();
+		      		      
 		}catch (Exception e) {
 		      System.out.print("get data error!");
 		      e.printStackTrace();

@@ -14,33 +14,34 @@ public class supply_title extends JPanel {
 	 * Create the panel.
 	 */
 	public supply_title() {
+		setLayout(null);
 		JLabel Jsuid = new JLabel("供应ID");
 		Jsuid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsuid.setBounds(5, 5, 40, 35);
+		Jsuid.setBounds(5, 5, 60, 35);
 		Jsuid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jsuid);
 		
 		JLabel Jsid = new JLabel("供应商ID");
 		Jsid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsid.setBounds(45, 5, 40, 35);
+		Jsid.setBounds(65, 5, 60, 35);
 		Jsid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jsid);
 		
 		JLabel Jmid = new JLabel("原料ID");
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jmid.setBounds(85, 5, 40, 35);
+		Jmid.setBounds(125, 5, 60, 35);
 		Jmid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jmid);
 		
 		JLabel Jamount = new JLabel("数量");
 		Jamount.setHorizontalAlignment(SwingConstants.CENTER);
-		Jamount.setBounds(125, 5, 80, 35);
+		Jamount.setBounds(185, 5, 80, 35);
 		Jamount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jamount);
 		
 		JLabel Jprice = new JLabel("总价");
 		Jprice.setHorizontalAlignment(SwingConstants.CENTER);
-		Jprice.setBounds(205, 5, 80, 35);
+		Jprice.setBounds(265, 5, 70, 35);
 		Jprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		add(Jprice);
 		

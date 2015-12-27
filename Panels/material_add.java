@@ -2,6 +2,7 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -32,9 +33,10 @@ public class material_add extends JFrame {
 	 */
 	material_add material_add_frame = this;
 	public material_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 244,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		JLabel lname = new JLabel("Ãû³Æ");
 		lname.setHorizontalAlignment(SwingConstants.CENTER);

@@ -2,6 +2,7 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -31,10 +32,11 @@ public class position_add extends JFrame {
 	 */
 	position_add position_add_frame = this;
 	public position_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 240,176);
 		getContentPane().setLayout(null);
-		
+
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		
 		
@@ -72,7 +74,7 @@ public class position_add extends JFrame {
 				if(Jposition.getText().length() == 0 ||  Jsalary.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
-					String SQLstatement = "insert into postion (postion, salary) "
+					String SQLstatement = "insert into position (p_name, p_salary) "
 							+ "values( '" + Jposition.getText() 
 							+ "' ,'" +Jsalary.getText() +"')";
 					try {

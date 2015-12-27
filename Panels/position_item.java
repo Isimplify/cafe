@@ -69,8 +69,8 @@ public class position_item extends JPanel {
 			       	Jid.setEditable(false);
 			       	Jposition.setEditable(false);
 			       	Jsalary.setEditable(false);
-			       	String SQLstatement = "Update new_schema1.position set position = ' "+ Jposition.getText()
-			       			+ " ' ,salary = ' "+ Jsalary.getText()
+			       	String SQLstatement = "Update new_schema1.position set p_name = ' "+ Jposition.getText()
+			       			+ " ' ,p_salary = ' "+ Jsalary.getText()
 			       			+ " '  where p_id = " + id;
 			       	try {
 	                                   ConnectDataBase.Update(SQLstatement);

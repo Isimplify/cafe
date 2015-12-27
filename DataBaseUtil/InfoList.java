@@ -34,8 +34,8 @@ public class InfoList {
 			while(rs.next()){
 				int id = rs.getInt(1);
 				String name = rs.getString(2);
-				String city =rs.getString(4);
-				String tele = rs.getString(5);
+				String city =rs.getString(3);
+				String tele = rs.getString(4);
 				supplier_item temp = new supplier_item(id, name, city, tele);
 				suppliers.put(new Integer(id), temp);
 			}
@@ -98,7 +98,7 @@ public class InfoList {
 				String name = rs.getString(2);
 				String sex =rs.getString(3);
 				int age = rs.getInt(4);
-				int tel = rs.getInt(5);
+				String tel = rs.getString(5);
 				int pid = rs.getInt(7);
 				employee_item temp = new employee_item(id, name, sex, age,tel,pid);
 				employees.put(id, temp);

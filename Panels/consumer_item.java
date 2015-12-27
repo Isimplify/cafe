@@ -100,12 +100,12 @@ public class consumer_item extends JPanel {
 			       	Jconsume.setEditable(false);
 			       	JifMember.setEditable(false);
 			       	Jconsume_total.setEditable(false);
-			       	String SQLstatement = "Update consumer set u_name = ' "+ Jname.getText()
+			       	String SQLstatement = "Update user set u_name = ' "+ Jname.getText()
 			       			+ " ' ,u_sex = ' "+ Jsex.getText()
-			       			+ " ' ,u_comsume=' " + Jconsume.getText()
-			       			+ " ' ,ifMember=' " + JifMember.getText()
-			       			+ " ' ,u_comsume_total=' " + Jconsume_total.getText()
-			       			+ " '  where s_id = " + id;
+			       			+ " ' ,u_consume=' " + Jconsume.getText()
+			       			+ " ' ,u_ifMem=' " + JifMember.getText()
+			       			+ " ' ,u_total=' " + Jconsume_total.getText()
+			       			+ " '  where u_id = " + id;
 			       	try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {
@@ -123,7 +123,7 @@ public class consumer_item extends JPanel {
 		       public void actionPerformed(ActionEvent arg0) {
 		       	int rt = JOptionPane.showConfirmDialog(null,"È·ÈÏÒªÉ¾³ýÂð£¿","É¾³ý",JOptionPane.YES_NO_OPTION);
 		       	if (rt == 0){
-		       		String SQLstatement = "delete from consumer where s_id = " + id;
+		       		String SQLstatement = "delete from user where u_id = " + id;
 		       		try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {

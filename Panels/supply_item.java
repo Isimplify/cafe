@@ -35,35 +35,35 @@ public class supply_item extends JPanel {
 		
 		JFormattedTextField Jsuid = new JFormattedTextField();
 		Jsuid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsuid.setBounds(5, 5, 40, 35);
+		Jsuid.setBounds(5, 5, 60, 35);
 		Jsuid.setEditable(false);
 		Jsuid.setText(""+supply_id);
 		add(Jsuid);
 		
 		JFormattedTextField Jsid = new JFormattedTextField();
 		Jsid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsid.setBounds(45, 5, 40, 35);
+		Jsid.setBounds(65, 5, 60, 35);
 		Jsid.setEditable(false);
 		Jsid.setText(""+supplier_id);
 		add(Jsid);
 		
 		JFormattedTextField Jmid = new JFormattedTextField();
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jmid.setBounds(85, 5, 40, 35);
+		Jmid.setBounds(125, 5, 60, 35);
 		Jmid.setEditable(false);
 		Jmid.setText(""+material_id);
 		add(Jmid);
 		
 		JFormattedTextField Jamount = new JFormattedTextField();
 		Jamount.setHorizontalAlignment(SwingConstants.CENTER);
-		Jamount.setBounds(125, 5, 80, 35);
+		Jamount.setBounds(185, 5, 80, 35);
 		Jamount.setEditable(false);
 		Jamount.setText(""+amount);
 		add(Jamount);
 		
 		JFormattedTextField Jprice = new JFormattedTextField();
 		Jprice.setHorizontalAlignment(SwingConstants.CENTER);
-		Jprice.setBounds(205, 5, 80, 35);
+		Jprice.setBounds(255, 5, 80, 35);
 		Jprice.setEditable(false);
 		Jprice.setText(""+price);
 		add(Jprice);
@@ -74,7 +74,7 @@ public class supply_item extends JPanel {
 		
 		JButton modify = new JButton("修改");
 		modify.setFont(new Font("黑体", Font.PLAIN, 12));
-		modify.setBounds(335, 5, 60, 35);
+		modify.setBounds(345, 5, 60, 35);
 		modify.addActionListener(new ActionListener(){
 		       public void actionPerformed(ActionEvent arg0) {
 			       if(arg0.getActionCommand().equals("修改")){
@@ -87,8 +87,8 @@ public class supply_item extends JPanel {
 			       	modify.setText("修改");
 			       	Jsid.setEditable(false);
 			       	Jmid.setEditable(false);
-			       	String SQLstatement = "Update new_schema1.supply set supplier_id = ' "+ Jsid.getText()
-			       			+ " ' ,material_id = ' "+ Jmid.getText()
+			       	String SQLstatement = "Update new_schema1.supply set s_id = ' "+ Jsid.getText()
+			       			+ " ' ,m_id = ' "+ Jmid.getText()
 			       			+ " ' ,amount = ' "+ Jamount.getText()
 			       			+ " ' ,price = ' "+ Jprice.getText()
 

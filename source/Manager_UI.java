@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.Window;
 
 import javax.swing.JFrame;
@@ -45,7 +46,6 @@ public class Manager_UI<T> extends JFrame {
 	JButton JStaff = new JButton("职工");
 	JButton JCustomer = new JButton("客户");
 	JButton JRank = new JButton("职称");
-	JButton JPersonalInfo = new JButton("个人信息");
 	
 	static JScrollPane scrollPane = new JScrollPane();
 	public static JPanel InfoListPanel = new JPanel();
@@ -76,7 +76,7 @@ public class Manager_UI<T> extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 655, 420);
 		getContentPane().setLayout(null);
-		
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		buttonList.setBounds(5, 5, 120, 371);
 		getContentPane().add(buttonList);
@@ -88,44 +88,39 @@ public class Manager_UI<T> extends JFrame {
 		buttonList.add(JSupplier);
 		
 		
-		JMaterial.setBounds(10, 50, 100, 30);
+		JMaterial.setBounds(10, 56, 100, 30);
 		JMaterial.addActionListener(new InfoListOpener());
 		buttonList.add(JMaterial);
 		
 		
-		JCoffee.setBounds(10, 90, 100, 30);
+		JCoffee.setBounds(10, 103, 100, 30);
 		JCoffee.addActionListener(new InfoListOpener());
 		buttonList.add(JCoffee);
 		
 		
-		JSupply.setBounds(10, 130, 100, 30);
+		JSupply.setBounds(10, 149, 100, 30);
 		JSupply.addActionListener(new InfoListOpener());
 		buttonList.add(JSupply);
 		
 		
-		JFormula.setBounds(10, 170, 100, 30);
+		JFormula.setBounds(10, 196, 100, 30);
 		JFormula.addActionListener(new InfoListOpener());
 		buttonList.add(JFormula);
 		
 		
-		JStaff.setBounds(10, 210, 100, 30);
+		JStaff.setBounds(10, 242, 100, 30);
 		JStaff.addActionListener(new InfoListOpener());
 		buttonList.add(JStaff);
 		
 		
-		JCustomer.setBounds(10, 250, 100, 30);
+		JCustomer.setBounds(10, 288, 100, 30);
 		JCustomer.addActionListener(new InfoListOpener());
 		buttonList.add(JCustomer);
 		
 		
-		JRank.setBounds(10, 290, 100, 30);
+		JRank.setBounds(10, 330, 100, 30);
 		JRank.addActionListener(new InfoListOpener());
 		buttonList.add(JRank);
-		
-		
-		JPersonalInfo.setBounds(10, 330, 100, 30);
-		JPersonalInfo.addActionListener(new InfoListOpener());
-		buttonList.add(JPersonalInfo);
 		
 		
 		
@@ -133,7 +128,7 @@ public class Manager_UI<T> extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(135, 10, 495, 362);
 		getContentPane().add(scrollPane);
-		scrollPane.setViewportView(InfoListPanel);
+		
 		
 		InfoListPanel.setLayout(null);
 		
@@ -220,6 +215,8 @@ public class Manager_UI<T> extends JFrame {
 		InfoListPanel.repaint();
 		height += 5;
 		InfoListPanel.setPreferredSize(new Dimension(485,height));
+		//System.out.println(height);
+		scrollPane.setViewportView(InfoListPanel);
 	}
 	
 	class InfoListOpener implements ActionListener{

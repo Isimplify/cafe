@@ -95,7 +95,7 @@ public class coffee_item extends JPanel {
 		       public void actionPerformed(ActionEvent arg0) {
 		       	int rt = JOptionPane.showConfirmDialog(null,"È·ÈÏÒªÉ¾³ýÂð£¿","É¾³ý",JOptionPane.YES_NO_OPTION);
 		       	if (rt == 0){
-		       		String SQLstatement = "delete from supplier where s_id = " + id;
+		       		String SQLstatement = "delete from coffee where c_id = " + id;
 		       		try {
 	                                   ConnectDataBase.Update(SQLstatement);
                                    } catch (SQLException e) {

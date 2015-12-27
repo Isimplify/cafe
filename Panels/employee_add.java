@@ -2,8 +2,10 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -32,9 +34,10 @@ public class employee_add extends JFrame {
 	 */
 	employee_add employ_add_frame = this;
 	public employee_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 342,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		
 		JLabel lname = new JLabel("姓名");
@@ -115,11 +118,14 @@ public class employee_add extends JFrame {
 				if(Jname.getText().length() == 0 ||  Jsex.getText().length() == 0 || Jage.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
-					String SQLstatement = "insert into employee (w_name, w_sex, w_age,w_tel,p_id) "
-							+ "values( '" + Jname.getText() 
+					String id = getNextId(Jpid.getText());
+					String SQLstatement = "insert into employee (w_id,w_name, w_sex, w_age,w_tel, w_password, p_id) "
+							+ "values( '" +id
+							+ "', '" +Jname.getText() 
 							+ "' ,'" +Jsex.getText()
 							+ "' ,'" +Jage.getText()
 							+ "' ,'" +Jtel.getText()
+							+ "' ,'" +"123"
 							+ "' ,'" +Jpid.getText()
 							+"')";
 					try {
@@ -148,5 +154,29 @@ public class employee_add extends JFrame {
 		
 		this.setVisible(true);
 	}
-
+	String getNextId(String pid){
+		String SQLstatement1 = "select w_id from employee where p_id = "+pid;
+		ResultSet rs1 = ConnectDataBase.Select(SQLstatement1);
+		int max = 0;
+		int p_id = Integer.parseInt(pid);
+		try {
+	              while(rs1.next()){
+	              	System.out.println("* * *");
+	              	if(Integer.parseInt(rs1.getString(1) ) / 1000 == p_id){
+	              		if(Integer.parseInt(rs1.getString(1) ) % p_id >max)
+	              			max = Integer.parseInt(rs1.getString(1) ) % p_id ;
+	              	}
+	              }
+              } catch (NumberFormatException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+              } catch (SQLException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+              }
+		max++;
+		max = p_id*1000 + max;
+		System.out.println("***** " + max +" ******");
+		return ""+max;
+	}
 }

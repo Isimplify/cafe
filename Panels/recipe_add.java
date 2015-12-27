@@ -2,8 +2,10 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -32,9 +34,10 @@ public class recipe_add extends JFrame {
 	 */
 	recipe_add recipe_add_frame = this;
 	public recipe_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 314,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		JLabel lcid = new JLabel("咖啡ID");
 		lcid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -81,7 +84,7 @@ public class recipe_add extends JFrame {
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
 
-					String SQLstatement = "insert into recipe (c_id, ml_id,dosage) "
+					String SQLstatement = "insert into recipe (c_id, m_id,dosage) "
 
 							+ "values( '" + Jcid.getText() 
 							+ "' ,'" +Jmid.getText() 
@@ -92,6 +95,7 @@ public class recipe_add extends JFrame {
 	                                   // TODO Auto-generated catch block
 	                                   e.printStackTrace();
                                    }
+					updateCoffeeNum(Jmid.getText());
 					Manager_UI.showMap("recipe");
 					recipe_add_frame.dispose();
 				}
@@ -112,5 +116,39 @@ public class recipe_add extends JFrame {
 		
 		this.setVisible(true);
 	}
+	void updateCoffeeNum(String mid){
+		ResultSet rs1 = null;
+		String SQLstatement1 = "select c_id from recipe where m_id = " + mid;
+		rs1 = ConnectDataBase.Select(SQLstatement1);
+		try {
+	              while(rs1.next()){
+	              	int cid = rs1.getInt(1);
+	              	ResultSet rs2 = null;
+	              	String SQLstatement2 = "select m_id,dosage from recipe where c_id = "+cid;
+	              	rs2 = ConnectDataBase.Select(SQLstatement2);
+	              	int min = -1;
+	              	while(rs2.next()){
+	              		ResultSet rs3 = null;
+	              		int m_id = rs2.getInt(1);
+	              		String SQLstatement3 = "select m_inventory from material where m_id = " + m_id;
+	              		rs3 = ConnectDataBase.Select(SQLstatement3);
+	              		int inventory = 0;
+	              		if(rs3.next())
+	              			inventory = rs3.getInt(1);
+	              		int dosage = rs2.getInt(2);
+	              		int num = inventory / dosage;
+	              		if(num < min || min == -1)
+	              			min = num;
+	              	}
+	              	if(min == -1)
+	              		min = 0;
+	              	String SQLstatement4 = "update coffee set c_num = "+min +" where c_id = " + cid;
+	              	ConnectDataBase.Update(SQLstatement4);
 
+	              }
+              } catch (SQLException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+              }
+	}
 }

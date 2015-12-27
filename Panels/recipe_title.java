@@ -15,7 +15,7 @@ public class recipe_title extends JPanel {
 	 */
 	public recipe_title() {
 		
-		
+		setLayout(null);
 		
 		JLabel Jcid = new JLabel("¿§·ÈID");
 		Jcid.setHorizontalAlignment(SwingConstants.CENTER);

@@ -2,6 +2,7 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -33,33 +34,34 @@ public class supply_add extends JFrame {
 	 */
 	supply_add supply_add_frame = this;
 	public supply_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 369,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		
 		
 		JLabel lsid = new JLabel("供应商ID");
 		lsid.setHorizontalAlignment(SwingConstants.CENTER);
-		lsid.setBounds(35, 5, 40, 35);
+		lsid.setBounds(35, 5, 60, 35);
 		lsid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(lsid);
 		
 		JLabel Imid = new JLabel("原料ID");
 		Imid.setHorizontalAlignment(SwingConstants.CENTER);
-		Imid.setBounds(75, 5, 40, 35);
+		Imid.setBounds(95, 5, 60, 35);
 		Imid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(Imid);
 		
 		JLabel Iamount = new JLabel("数量");
 		Iamount.setHorizontalAlignment(SwingConstants.CENTER);
-		Iamount.setBounds(115, 5, 80, 35);
+		Iamount.setBounds(155, 5, 80, 35);
 		Iamount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(Iamount);
 		
 		JLabel lprice = new JLabel("总价");
 		lprice.setHorizontalAlignment(SwingConstants.CENTER);
-		lprice.setBounds(195, 5, 80, 35);
+		lprice.setBounds(235, 5, 80, 35);
 		lprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(lprice);
 		
@@ -69,25 +71,25 @@ public class supply_add extends JFrame {
 		
 		JFormattedTextField Jsid = new JFormattedTextField();
 		Jsid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jsid.setBounds(35, 40, 40, 35);
+		Jsid.setBounds(35, 40, 60, 35);
 		Jsid.setEditable(true);
 		getContentPane().add(Jsid);
 		
 		JFormattedTextField Jmid = new JFormattedTextField();
 		Jmid.setHorizontalAlignment(SwingConstants.CENTER);
-		Jmid.setBounds(75, 40, 40, 35);
+		Jmid.setBounds(95, 40, 60, 35);
 		Jmid.setEditable(true);
 		getContentPane().add(Jmid);
 		
 		JFormattedTextField Jamount = new JFormattedTextField();
 		Jamount.setHorizontalAlignment(SwingConstants.CENTER);
-		Jamount.setBounds(115, 40, 80, 35);
+		Jamount.setBounds(155, 40, 80, 35);
 		Jamount.setEditable(true);
 		getContentPane().add(	Jamount);
 		
 		JFormattedTextField Jprice = new JFormattedTextField();
 		Jprice.setHorizontalAlignment(SwingConstants.CENTER);
-		Jprice.setBounds(195, 40, 80, 35);
+		Jprice.setBounds(235, 40, 80, 35);
 		Jprice.setEditable(true);
 		getContentPane().add(Jprice);
 		
@@ -157,6 +159,8 @@ public class supply_add extends JFrame {
 	              		if(num < min || min == -1)
 	              			min = num;
 	              	}
+	              	if(min == -1)
+	              		min = 0;
 	              	String SQLstatement4 = "update coffee set c_num = "+min +" where c_id = " + cid;
 	              	ConnectDataBase.Update(SQLstatement4);
 

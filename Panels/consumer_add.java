@@ -2,6 +2,7 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -32,9 +33,10 @@ public class consumer_add extends JFrame {
 	 */
 	consumer_add consumer_add_frame = this;
 	public consumer_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 10, 349,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 	
 		
@@ -108,7 +110,7 @@ public class consumer_add extends JFrame {
 				if(Jname.getText().length() == 0 ||  Jsex.getText().length() == 0 || Jconsume.getText().length() == 0 || JifMember.getText().length() == 0 || Jconsume_total.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "请在文本框中输入内容", "错误", JOptionPane.ERROR_MESSAGE);
 				else{
-					String SQLstatement = "insert into consumer (u_name, u_sex, u_consume, ifMember, u_consume_total) "
+					String SQLstatement = "insert into user (u_name, u_sex, u_consume, u_ifMem, u_total) "
 							+ "values( '" + Jname.getText() 
 							+ "' ,'" +Jsex.getText()
 							+ "' ,'" +Jconsume.getText()

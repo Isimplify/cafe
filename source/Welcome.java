@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -13,8 +14,10 @@ import javax.swing.JButton;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.SpringLayout;
 import javax.swing.BoxLayout;
@@ -30,6 +33,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import DataBaseUtil.*;
+import java.awt.Color;
 
 public class Welcome extends JFrame {
 
@@ -59,6 +63,7 @@ public class Welcome extends JFrame {
 	 * Create the frame.
 	 */
 	public Welcome() {
+		setFont(new Font("Dialog", Font.PLAIN, 17));
 		setTitle("\u6B22\u8FCE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 591, 420);
@@ -68,8 +73,9 @@ public class Welcome extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lab1 = new JLabel("Caf\u00E9 \u7BA1\u7406\u7CFB\u7EDF");
+		lab1.setForeground(Color.WHITE);
 		lab1.setFont(new Font("ÀŒÃÂ", Font.BOLD, 24));
-		lab1.setBounds(209, 26, 218, 77);
+		lab1.setBounds(243, 26, 218, 77);
 		contentPane.add(lab1);
 		
 		JLabel label2 = new JLabel("\u7528\u6237\u540D");
@@ -83,12 +89,12 @@ public class Welcome extends JFrame {
 		contentPane.add(label3);
 		
 		usernametxt = new JTextField();
-		usernametxt.setBounds(296, 120, 131, 25);
+		usernametxt.setBounds(265, 120, 131, 25);
 		contentPane.add(usernametxt);
 		usernametxt.setColumns(10);
 		
 		passwordtxt = new JPasswordField();
-		passwordtxt.setBounds(296, 180, 131, 25);
+		passwordtxt.setBounds(265, 180, 131, 25);
 		contentPane.add(passwordtxt);
 		
 		login = new JButton("µ«¬º");
@@ -104,10 +110,10 @@ public class Welcome extends JFrame {
 				}
 				else{
 					
-					String username = usernametxt.getText();
-					int user_id = Integer.parseInt(username);
+					String user_id = usernametxt.getText();
+					//int user_id = Integer.parseInt(username);
 					String password = new String (passwordtxt.getPassword());
-					String SQLstatement = "select w_password ,p_id from employee where w_id = " + user_id;
+					String SQLstatement = "select w_password ,p_id from employee where w_id = '" + user_id + "'";
 					ResultSet rs = DataBaseUtil.ConnectDataBase.Select(SQLstatement);
 					try {
 						if(rs.next()){
@@ -140,16 +146,36 @@ public class Welcome extends JFrame {
 		login.setBounds(162, 256, 93, 41);
 		contentPane.add(login);
 		
-		changepwd = new JButton("\u91CD\u7F6E");
+		changepwd = new JButton("÷ÿ÷√");
 		changepwd.setFont(new Font("ÀŒÃÂ", Font.PLAIN, 16));
 		changepwd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String username = usernametxt.getText();
-				String password = new String (passwordtxt.getPassword());
+				//int userID = Integer.parseInt(usernametxt.getText());
+				//String password = new String (passwordtxt.getPassword());
+				new Password_change();
 				
 			}
 		});
 		changepwd.setBounds(346, 256, 93, 41);
 		contentPane.add(changepwd);
+		
+		ImageIcon icon=new ImageIcon("images/8.jpg");
+		icon.setImage(icon.getImage().getScaledInstance(87,77,Image.SCALE_DEFAULT));
+		JLabel picture = new JLabel(icon);
+		picture.setOpaque(true);
+		picture.setBounds(120,26,87,77);
+		contentPane.add(picture,new Integer(Integer.MIN_VALUE));
+		
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
+		
+		JLabel jlpic = new JLabel();
+		ImageIcon icon3 = new ImageIcon("images/19.jpg");  
+        icon3.setImage(icon3.getImage().getScaledInstance(575,  
+                381, Image.SCALE_DEFAULT));  
+        //System.out.println(icon3.getIconHeight() + "" + icon3.getIconWidth());  
+        jlpic.setBounds(0, 0,575,381);  
+        jlpic.setHorizontalAlignment(0);  
+        jlpic.setIcon(icon3);  
+        getContentPane().add(jlpic);  
 	}
 }

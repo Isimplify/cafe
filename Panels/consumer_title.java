@@ -14,6 +14,7 @@ public class consumer_title extends JPanel {
 	 * Create the panel.
 	 */
 	public consumer_title() {
+		setLayout(null);
 		JLabel Jid = new JLabel("ID");
 		Jid.setHorizontalAlignment(SwingConstants.CENTER);
 		Jid.setBounds(5, 5, 40, 35);

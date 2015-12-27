@@ -2,6 +2,7 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -37,8 +38,9 @@ public class supplier_add extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 308,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
-		JLabel lname = new JLabel("濮撳悕");
+		JLabel lname = new JLabel("供应商名");
 		lname.setHorizontalAlignment(SwingConstants.CENTER);
 		lname.setBounds(5, 5, 80, 35);
 		lname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
@@ -46,13 +48,13 @@ public class supplier_add extends JFrame {
 		
 		
 		
-		JLabel lcity = new JLabel("鍩庡競");
+		JLabel lcity = new JLabel("城市");
 		lcity.setHorizontalAlignment(SwingConstants.CENTER);
 		lcity.setBounds(85, 5, 70, 35);
 		lcity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
 		getContentPane().add(lcity);
 		
-		JLabel ltel = new JLabel("鐢佃瘽鍙风爜");
+		JLabel ltel = new JLabel("电话号码");
 		ltel.setHorizontalAlignment(SwingConstants.CENTER);
 		ltel.setBounds(155, 5, 120, 35);
 		ltel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
@@ -80,7 +82,7 @@ public class supplier_add extends JFrame {
 		Jtel.setEditable(true);
 		getContentPane().add(Jtel);
 		
-		JButton confirm = new JButton("纭畾");
+		JButton confirm = new JButton("确定");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(Jname.getText().length() == 0 ||  Jcity.getText().length() == 0 || Jtel.getText().length() == 0)
@@ -104,7 +106,7 @@ public class supplier_add extends JFrame {
 		confirm.setBounds(55, 97, 80, 30);
 		getContentPane().add(confirm);
 		
-		JButton cancel = new JButton("鍙栨秷");
+		JButton cancel = new JButton("取消");
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				supplier_add_frame.dispose();
@@ -117,5 +119,3 @@ public class supplier_add extends JFrame {
 		this.setVisible(true);
 	}
 }
-/*the second time*/
-/*that is is is a test*/

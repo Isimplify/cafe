@@ -14,6 +14,7 @@ public class position_title extends JPanel {
 	 * Create the panel.
 	 */
 	public position_title() {
+		setLayout(null);
 		JLabel Jid = new JLabel("Ö°³Æ±àºÅ");
 		Jid.setHorizontalAlignment(SwingConstants.CENTER);
 		Jid.setBounds(5, 5, 70, 35);

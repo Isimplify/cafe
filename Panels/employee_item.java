@@ -31,9 +31,9 @@ public class employee_item extends JPanel {
 	String name;
 	String sex;
 	int age;
-	int tel;
+	String tel;
 	int pid;
-	public employee_item(int id, String name, String sex, int age, int tel, int pid) {
+	public employee_item(int id, String name, String sex, int age, String tel, int pid) {
 		this.id = id;
 		this.name = name;
 		this.sex = sex;

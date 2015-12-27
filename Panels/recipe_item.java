@@ -98,7 +98,7 @@ public class recipe_item extends JPanel {
 		       	int rt = JOptionPane.showConfirmDialog(null,"È·ÈÏÒªÉ¾³ýÂð£¿","É¾³ý",JOptionPane.YES_NO_OPTION);
 		       	if (rt == 0){
 
-		       		String SQLstatement = "delete from recipe where _id = " + recipe_item_obj.coffee_id + " and m_id = " + recipe_item_obj.material_id;
+		       		String SQLstatement = "delete from recipe where c_id = " + recipe_item_obj.coffee_id + " and m_id = " + recipe_item_obj.material_id;
 
 		       		try {
 	                                   ConnectDataBase.Update(SQLstatement);

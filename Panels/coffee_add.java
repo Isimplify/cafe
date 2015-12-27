@@ -2,8 +2,10 @@ package Panels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -30,12 +32,12 @@ public class coffee_add extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	int num = 0;//øß∑»”‡¡ø
 	coffee_add coffee_add_frame = this;
 	public coffee_add() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(5, 5, 244,176);
 		getContentPane().setLayout(null);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/13.png"));
 		
 		JLabel lname = new JLabel("√˚≥∆");
 		lname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,7 +82,7 @@ public class coffee_add extends JFrame {
 					String SQLstatement = "insert into coffee (c_name, c_price,c_num) "
 							+ "values( '" + Jname.getText() 
 							+ "' ,'" +Jprice.getText() 
-							+ "' ,'" +num 
+							+ "' ,' 0 "  
 							+"')";
 					try {
 	                                   ConnectDataBase.Update(SQLstatement);
@@ -88,6 +90,7 @@ public class coffee_add extends JFrame {
 	                                   // TODO Auto-generated catch block
 	                                   e.printStackTrace();
                                    }
+					updateCoffeeNum(Jname.getText());
 					Manager_UI.showMap("coffee");
 					coffee_add_frame.dispose();
 				}
@@ -108,5 +111,50 @@ public class coffee_add extends JFrame {
 		
 		this.setVisible(true);
 	}
-
+	
+	void updateCoffeeNum(String c_name){
+       	String SQLstatement1 = "select c_id from coffee where c_name = '" + c_name +"'";
+       	ResultSet rs1 = ConnectDataBase.Select(SQLstatement1);
+       	int cid = 0;
+       	try {
+	              if(rs1.next())
+	              	cid = rs1.getInt(1);
+              } catch (SQLException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+	              return;
+              }
+		ResultSet rs2 = null;
+       	String SQLstatement2 = "select m_id,dosage from recipe where c_id = "+cid;
+       	rs2 = ConnectDataBase.Select(SQLstatement2);
+       	int min = -1;
+       	try {
+	              while(rs2.next()){
+	              	ResultSet rs3 = null;
+	              	int m_id = rs2.getInt(1);
+	              	String SQLstatement3 = "select m_inventory from material where m_id = " + m_id;
+	              	rs3 = ConnectDataBase.Select(SQLstatement3);
+	              	int inventory = 0;
+	              	if(rs3.next())
+	              		inventory = rs3.getInt(1);
+	              	int dosage = rs2.getInt(2);
+	              	int num = inventory / dosage;
+	              	if(num < min || min == -1)
+	              		min = num;
+	              }
+              } catch (SQLException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+	              return;
+              }
+       	if(min == -1)
+       		min = 0;
+       	String SQLstatement4 = "update coffee set c_num = "+min +" where c_id = " + cid;
+       	try {
+	              ConnectDataBase.Update(SQLstatement4);
+              } catch (SQLException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+              }
+	}
 }
